@@ -85,3 +85,5 @@ D:\WebPortal\WebPortal\obj\Debug\net6.0\refint\WebPortal.dll
 D:\WebPortal\WebPortal\obj\Debug\net6.0\WebPortal.pdb
 D:\WebPortal\WebPortal\obj\Debug\net6.0\WebPortal.genruntimeconfig.cache
 D:\WebPortal\WebPortal\obj\Debug\net6.0\ref\WebPortal.dll
+D:\WebPortal\WebPortal\bin\Debug\net6.0\CloudinaryDotNet.dll
+D:\WebPortal\WebPortal\bin\Debug\net6.0\Newtonsoft.Json.dll
