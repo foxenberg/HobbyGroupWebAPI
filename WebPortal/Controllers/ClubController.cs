@@ -24,5 +24,21 @@ namespace WebPortal.Controllers
             Club club = await _clubRepository.GetByAsyncId(id);
             return View(club);
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Club club)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(club);
+            }
+            _clubRepository.Add(club);
+            return RedirectToAction("Index");
+        }
     }
 }
