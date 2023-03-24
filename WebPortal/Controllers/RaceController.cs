@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebPortal.Data;
 using WebPortal.Models;
 
@@ -20,7 +21,7 @@ namespace WebPortal.Controllers
         }
         public IActionResult Detail(int id)
         {
-            Race race = _context.Races.FirstOrDefault(c => c.Id == id);
+            Race race = _context.Races.Include(a => a.Address).FirstOrDefault(c => c.Id == id);
             return View(race);
         }
     }
