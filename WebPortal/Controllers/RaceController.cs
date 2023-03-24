@@ -1,27 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebPortal.Data;
+using WebPortal.Interfaces;
 using WebPortal.Models;
 
 namespace WebPortal.Controllers
 {
     public class RaceController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IRaceRepository _raceRepository;
 
-        public RaceController(ApplicationDbContext context)
+        public RaceController(IRaceRepository raceRepository)
         {
-            _context = context;
+            _raceRepository = raceRepository;
         }
 
-        public IActionResult Index()
-        {
-            List<Race> races = _context.Races.ToList();
+        public async Task<IActionResult> Index()
+        {   IEnumerable<Race> races = await _raceRepository.GetAll();
             return View(races);
         }
-        public IActionResult Detail(int id)
+        public async Task<IActionResult> Detail(int id)
         {
-            Race race = _context.Races.Include(a => a.Address).FirstOrDefault(c => c.Id == id);
+            Race race = await _raceRepository.GetByAsyncId(id);
             return View(race);
         }
     }
